@@ -11,7 +11,21 @@
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title><?php wp_title(''); ?></title>
+		<title><?php bloginfo('name'); ?></title>
+		<meta name="description" content="<?php bloginfo('description'); ?>" />
+
+		<!--<meta property="og:site_name" content=""/>-->
+		<meta property="og:title" content="<?php bloginfo('name'); ?>"/>
+		<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/library/images/matchstick3_black_transp_back.png"/>
+		<meta property="og:url" content="<?php echo site_url(); ?>"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:description" content="<?php bloginfo('description'); ?>"/>
+
+		<meta name="twitter:title" content="<?php bloginfo('name'); ?>"/>
+		<meta name="twitter:image" content="<?php echo get_template_directory_uri(); ?>/library/images/matchstick3_black_transp_back.png"/>
+		<meta name="twitter:url" content="<?php echo site_url(); ?>"/>
+		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:description" content="<?php bloginfo('description'); ?>"/>
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheldFriendly" content="True">
