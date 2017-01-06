@@ -30,13 +30,12 @@
 	$name = $_POST['message_name'];
 	$email = $_POST['message_email'];
 	$message = $_POST['message_text'];
-	$human = $_POST['message_human'];
+	$human = intval($_POST['message_human']);
 	 
 	//php mailer variables
 	$to = get_option('admin_email');
-	$subject = "Someone sent a message from ".get_bloginfo('name');
-	$headers = 'From: '. $email . "\r\n" .
-	  'Reply-To: ' . $email . "\r\n";
+	$subject = get_bloginfo('name') . ' Contact Form Message';
+	$headers = 'Reply-To: ' . $email . "\r\n";
 
 	if(!$human == 0){
 	  if($human != 2) my_contact_form_generate_response("error", $not_human); //not human!
