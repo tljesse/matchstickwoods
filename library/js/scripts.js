@@ -122,10 +122,10 @@ jQuery(document).ready(function($) {
   });
 
   $(window).resize(function(){
-  if(window.innerWidth > 1029) {
-    $(".top-nav").removeAttr("style");
-  }
-});
+    if(window.innerWidth > 1029) {
+      $(".top-nav").removeAttr("style");
+    }
+  });
 
 
 }); /* end of as page load scripts */

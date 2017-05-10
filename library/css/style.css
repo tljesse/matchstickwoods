@@ -644,7 +644,7 @@ over your project's layout.
 .about-image img {
   width: 100%; }
 
-.gallery-container img {
+.gallery-container img, .page-template-gallery-page img {
   width: 100%;
   max-height: 370px; }
 
@@ -1281,6 +1281,17 @@ html {
   top: 30%;
   transform: translateY(-50%); }
 
+.button.contact a {
+  max-width: 90px;
+  padding: 1em;
+  background-color: #ff6700;
+  color: #fff;
+  border-radius: 4px;
+  margin-top: 1em; }
+  .button.contact a:hover {
+    color: #fff;
+    background-color: #cc5501; }
+
 .product-caption {
   text-transform: uppercase;
   font-weight: 300;
@@ -1376,17 +1387,31 @@ style a page via class
 /* tag page */
 /* individual tag page (i.e. body.tag-news) */
 /* replace the number to the corresponding page number */
-.page-template-charred-interior, .page-template-details-gallery, .page-template-about, .page-template-contact, .gallery-container {
+.page-template-gallery-template, .page-template-details-gallery, .page-template-information, .page-template-about, .page-template-contact, .gallery-container {
   color: #323944; }
-  .page-template-charred-interior h1, .page-template-charred-interior .h1, .page-template-details-gallery h1, .page-template-details-gallery .h1, .page-template-about h1, .page-template-about .h1, .page-template-contact h1, .page-template-contact .h1, .gallery-container h1, .gallery-container .h1 {
+  .page-template-gallery-template h1, .page-template-gallery-template .h1, .page-template-details-gallery h1, .page-template-details-gallery .h1, .page-template-information h1, .page-template-information .h1, .page-template-about h1, .page-template-about .h1, .page-template-contact h1, .page-template-contact .h1, .gallery-container h1, .gallery-container .h1 {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 1em;
     text-align: left; }
-  .page-template-charred-interior p, .page-template-charred-interior a, .page-template-charred-interior .textwidget, .page-template-charred-interior .product-description, .page-template-details-gallery p, .page-template-details-gallery a, .page-template-details-gallery .textwidget, .page-template-details-gallery .product-description, .page-template-about p, .page-template-about a, .page-template-about .textwidget, .page-template-about .product-description, .page-template-contact p, .page-template-contact a, .page-template-contact .textwidget, .page-template-contact .product-description, .gallery-container p, .gallery-container a, .gallery-container .textwidget, .gallery-container .product-description {
+  .page-template-gallery-template p, .page-template-gallery-template a, .page-template-gallery-template .textwidget, .page-template-gallery-template .product-description, .page-template-details-gallery p, .page-template-details-gallery a, .page-template-details-gallery .textwidget, .page-template-details-gallery .product-description, .page-template-information p, .page-template-information a, .page-template-information .textwidget, .page-template-information .product-description, .page-template-about p, .page-template-about a, .page-template-about .textwidget, .page-template-about .product-description, .page-template-contact p, .page-template-contact a, .page-template-contact .textwidget, .page-template-contact .product-description, .gallery-container p, .gallery-container a, .gallery-container .textwidget, .gallery-container .product-description {
     text-align: left; }
 
 /* custom page template page */
+.page-template-information #main ul {
+  list-style-type: none; }
+  .page-template-information #main ul li {
+    width: 100%;
+    text-align: left;
+    float: left;
+    overflow: visible; }
+    .page-template-information #main ul li:before {
+      content: '\2713\0020'; }
+.page-template-information #main #text-8 {
+  min-height: 400px; }
+.page-template-information #main .widgettitle {
+  padding-top: 2em; }
+
 /* individual page template (i.e. body.page-template-contact-php */
 /* replace the number to the corresponding page number */
 /* parent page template */

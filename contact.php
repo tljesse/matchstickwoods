@@ -27,13 +27,14 @@
 	$message_sent    = "Thanks! Your message has been sent.";
 	 
 	//user posted variables
-	$name = $_POST['message_name'];
-	$email = $_POST['message_email'];
-	$message = $_POST['message_text'];
+	$type = $_POST['message_type'];
+	$name = strip_tags($_POST['message_name']);
+	$email = strip_tags($_POST['message_email']);
+	$phone = strip_tags($_POST['message_phone']);
+	$message = strip_tags($_POST['message_text']);
 	$human = intval($_POST['message_human']);
 	 
 	//php mailer variables
-	$to = get_option('admin_email');
 	$subject = get_bloginfo('name') . ' Contact Form Message';
 	$headers = 'Reply-To: ' . $email . "\r\n";
 
@@ -47,14 +48,20 @@
 		else //email is valid
 		{
 	    //validate presence of name and message
-		  if(empty($name) || empty($message)){
+		  if(empty($name) || empty($phone) || empty($type) || empty($message)){
 		    my_contact_form_generate_response("error", $missing_content);
 		  }
 		  else //ready to go!
 		  {
-		    $sent = wp_mail($to, $subject, strip_tags($message), $headers);
-			if($sent) my_contact_form_generate_response("success", $message_sent); //message sent!
-			else my_contact_form_generate_response("error", $message_unsent); //message wasn't sent
+		  	$messageContent = "From: $name \n Phone: $phone \n Message: $message";
+		  	if ($type == 'counter') {
+		  		$to = get_option('countertops_email');
+		  	} else {
+		  		$to = get_option('siding_email');
+		  	}
+		    $sent = wp_mail($to, $subject, $messageContent, $headers);
+				if($sent) my_contact_form_generate_response("success", $message_sent); //message sent!
+				else my_contact_form_generate_response("error", $message_unsent); //message wasn't sent
 		  }
 		}
 	  }
@@ -84,8 +91,13 @@
 			<div id="respond" class="m-all t-2of3 d-2of3">
 			  <?php echo $response; ?>
 			  <form action="<?php the_permalink(); ?>" method="post">
-			    <p><label for="name">Name: <span>*</span> <br><input type="text" name="message_name" value="<?php echo esc_attr($_POST['message_name']); ?>"></label></p>
+			  	<p>
+			  		<label for="message_type">Service: <span>*</span> <br><input type="radio" name="message_type" value="counter"> Countertops
+			  		<br/><input type="radio" name="message_type" value="siding"> Siding</label>
+			  	</p>
+			    <p><label for="message_name">Name: <span>*</span> <br><input type="text" name="message_name" value="<?php echo esc_attr($_POST['message_name']); ?>"></label></p>
 			    <p><label for="message_email">Email: <span>*</span> <br><input type="text" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>"></label></p>
+			    <p><label for="message_phone">Phone: <span>*</span> <br><input type="text" name="message_phone" value="<?php echo esc_attr($_POST['message_phone']); ?>"></label></p>
 			    <p><label for="message_text">Message: <span>*</span> <br><textarea type="text" name="message_text"><?php echo esc_textarea($_POST['message_text']); ?></textarea></label></p>
 			    <p><label for="message_human">Human Verification: <span>*</span> <br><input type="text" style="width: 60px;" name="message_human"> + 3 = 5</label></p>
 			    <input type="hidden" name="submitted" value="1">

@@ -38,6 +38,24 @@ html {
 	transform: translateY(-50%);
 }
 
+.button {
+    &.contact {
+	    a {
+	    	max-width: 90px;
+		    padding: 1em;
+		    background-color: #ff6700;
+		    color: #fff;
+		    border-radius: 4px;
+		    margin-top: 1em;
+
+	    	&:hover {
+	    		color: #fff;
+	    		background-color: #cc5501;
+	    	}
+	    }
+	}
+}
+
 .product-caption {
 	text-transform: uppercase;
 	font-weight: 300;
@@ -154,7 +172,7 @@ style a page via class
 .tag {}                           /* tag page */
 	.tag-slug {}                    /* individual tag page (i.e. body.tag-news) */
 	.tag-paged-1 {}                 /* replace the number to the corresponding page number */
-.page-template-charred-interior, .page-template-details-gallery, .page-template-about, .page-template-contact, .gallery-container {
+.page-template-gallery-template, .page-template-details-gallery, .page-template-information, .page-template-about, .page-template-contact, .gallery-container {
 	color: $black;
 
 	h1, .h1 {
@@ -168,6 +186,32 @@ style a page via class
 		text-align: left;
 	}
 }                 /* custom page template page */
+.page-template-information {
+	#main {
+		ul {
+			list-style-type: none;
+
+			li {
+				width: 100%;
+				text-align: left;
+				float: left;
+				overflow: visible;
+
+				&:before {
+					content: '\2713\0020';
+				}
+			}
+		}
+
+		#text-8 {
+			min-height: 400px;
+		}
+
+		.widgettitle {
+			padding-top: 2em;
+		}
+	}
+}
 	.page-template-page-php {}      /* individual page template (i.e. body.page-template-contact-php */
 	.page-paged-1 {}                /* replace the number to the corresponding page number */
 	.page-parent {}                 /* parent page template */

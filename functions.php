@@ -113,6 +113,56 @@ duplicate one of the lines in the array and name it according to your
 new image size.
 */
 
+/************* THEME SETTINGS **********************/
+
+/*
+  Adding in extra settings to the wp_admin
+*/
+
+add_action('admin_init', 'my_general_section');  
+function my_general_section() {  
+    add_settings_section(  
+        'contact_emails_section', // Section ID 
+        'Contact Form Emails', // Section Title
+        'contact_options_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'countertops_email', // Option ID
+        'Countertops Email', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'contact_emails_section', // Name of our section
+        array( // The $args
+            'countertops_email' // Should match Option ID
+        )  
+    ); 
+
+    add_settings_field( // Option 2
+        'siding_email', // Option ID
+        'Siding Email', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed
+        'contact_emails_section', // Name of our section (General Settings)
+        array( // The $args
+            'siding_email' // Should match Option ID
+        )  
+    ); 
+
+    register_setting('general','countertops_email', 'esc_attr');
+    register_setting('general','siding_email', 'esc_attr');
+}
+
+function contact_options_callback() { // Section Callback
+    echo '<p>Set emails for the contact form</p>';  
+}
+
+function my_textbox_callback($args) {  // Textbox Callback
+    $option = get_option($args[0]);
+    echo '<input type="text" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '" />';
+}
+
 /************* THEME CUSTOMIZE *********************/
 
 /* 
@@ -202,6 +252,46 @@ function bones_register_sidebars() {
     'after_widget' => '</div>',
     'before_title' => '<h2 class="h1">',
     'after_title' => '</h2>',
+  ));
+
+  register_sidebar(array(
+    'id' => 'widget6',
+    'name' => __( 'Info Step 1', 'bonestheme' ),
+    'description' => __( 'Widget space for step 1 on Info page.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h4 class="widgettitle">',
+    'after_title' => '</h4>',
+  ));
+
+  register_sidebar(array(
+    'id' => 'widget7',
+    'name' => __( 'Info Step 2', 'bonestheme' ),
+    'description' => __( 'Widget space for step 2 on Info page.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h4 class="widgettitle">',
+    'after_title' => '</h4>',
+  ));
+
+  register_sidebar(array(
+    'id' => 'widget8',
+    'name' => __( 'Info Step 3', 'bonestheme' ),
+    'description' => __( 'Widget space for step 3 on Info page.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h4 class="widgettitle">',
+    'after_title' => '</h4>',
+  ));
+
+  register_sidebar(array(
+    'id' => 'widget9',
+    'name' => __( 'Info Step 4', 'bonestheme' ),
+    'description' => __( 'Widget space for step 4 on Info page.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h4 class="widgettitle">',
+    'after_title' => '</h4>',
   ));
 
 	/*
